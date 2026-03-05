@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Como as tecnologias podem auxiliar a inclusão das pessoas com deficiência nos processos de ensino e aprendizagem">
+    <title>Tecnologias Assistivas na Educação - Carlos Alberto Ferreira Dias</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cor-primaria: #1a5490;
+            --cor-secundaria: #2980b9;
+            --cor-destaque: #e74c3c;
+            --cor-sucesso: #27ae60;
+            --cor-fundo: #f8f9fa;
+            --cor-texto: #2c3e50;
+            --cor-texto-claro: #ffffff;
+            --cor-borda: #bdc3c7;
+            --espacamento: 1.5rem;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            color: var(--cor-texto);
+            background-color: var(--cor-fundo);
+            font-size: 16px;
+        }
+
+        /* Acessibilidade - Skip Link */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--cor-primaria);
+            color: var(--cor-texto-claro);
+            padding: 8px;
+            text-decoration: none;
+            z-index: 100;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--cor-primaria) 0%, var(--cor-secundaria) 100%);
+            color: var(--cor-texto-claro);
+            padding: 3rem var(--espacamento);
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            opacity: 0.95;
+        }
+
+        .header-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .header-info span {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+
+        /* Navegação */
+        nav {
+            background: var(--cor-primaria);
+            padding: 1rem var(--espacamento);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav a {
+            color: var(--cor-texto-claro);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background 0.3s ease;
+        }
+
+        nav a:hover,
+        nav a:focus {
+            background: rgba(255, 255, 255, 0.2);
+            outline: 2px solid var(--cor-destaque);
+        }
+
+        /* Container Principal */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: var(--espacamento);
+        }
+
+        /* Seções */
+        section {
+            background: var(--cor-texto-claro);
+            margin-bottom: 2rem;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            border-left: 5px solid var(--cor-secundaria);
+        }
+
+        section h2 {
+            color: var(--cor-primaria);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--cor-secundaria);
+        }
+
+        section h3 {
+            color: var(--cor-secundaria);
+            font-size: 1.3rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Listas */
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.8rem;
+            line-height: 1.8;
+        }
+
+        /* Destaque */
+        .destaque {
+            background: #e8f4f8;
+            border-left: 4px solid var(--cor-secundaria);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        .destaque strong {
+            color: var(--cor-primaria);
+        }
+
+        /* Cards de Benefícios */
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--cor-sucesso);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h4 {
+            color: var(--cor-sucesso);
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        /* Desafios */
+        .desafios {
+            background: #fff3cd;
+            border-left: 4px solid var(--cor-destaque);
+        }
+
+        .desafios h2 {
+            color: var(--cor-destaque);
+        }
+
+        /* Estatísticas */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-box {
+            background: linear-gradient(135deg, var(--cor-primaria) 0%, var(--cor-secundaria) 100%);
+            color: var(--cor-texto-claro);
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .stat-box .numero {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-box .descricao {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Citações */
+        blockquote {
+            border-left: 4px solid var(--cor-secundaria);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: #555;
+            background: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 4px;
+        }
+
+        blockquote strong {
+            color: var(--cor-primaria);
+            font-style: normal;
+        }
+
+        /* Tabelas */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: var(--cor-texto-claro);
+        }
+
+        table th {
+            background: var(--cor-primaria);
+            color: var(--cor-texto-claro);
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--cor-borda);
+        }
+
+        table tr:nth-child(even) {
+            background: #f5f5f5;
+        }
+
+        table tr:hover {
+            background: #e8f4f8;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--cor-primaria);
+            color: var(--cor-texto-claro);
+            text-align: center;
+            padding: 2rem var(--espacamento);
+            margin-top: 3rem;
+            border-top: 4px solid var(--cor-secundaria);
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a {
+            color: var(--cor-texto-claro);
+            text-decoration: underline;
+            margin: 0 0.5rem;
+        }
+
+        .footer-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Acessibilidade - Foco visível */
+        a:focus,
+        button:focus,
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: 3px solid var(--cor-destaque);
+            outline-offset: 2px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            nav a {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.9rem;
+            }
+
+            .header-info {
+                gap: 1rem;
+            }
+
+            section {
+                padding: 1.5rem;
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Impressão */
+        @media print {
+            nav {
+                display: none;
+            }
+
+            section {
+                page-break-inside: avoid;
+                box-shadow: none;
+                border: 1px solid var(--cor-borda);
+            }
+        }
+
+        /* Modo escuro (opcional) */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #1a1a1a;
+                color: #e0e0e0;
+            }
+
+            section {
+                background: #2a2a2a;
+                color: #e0e0e0;
+            }
+
+            .destaque {
+                background: #1a3a4a;
+            }
+
+            table {
+                background: #2a2a2a;
+            }
+
+            table tr:nth-child(even) {
+                background: #333;
+            }
+
+            blockquote {
+                background: #333;
+                color: #b0b0b0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip Link para Acessibilidade -->
+    <a href="#conteudo-principal" class="skip-link">Pular para conteúdo principal</a>
+
+    <!-- Header -->
+    <header role="banner">
+        <h1>Tecnologias Assistivas na Educação</h1>
+        <p>Como as tecnologias podem auxiliar a inclusão das pessoas com deficiência nos processos de ensino e aprendizagem</p>
+        <div class="header-info">
+            <span><strong>Instituição:</strong> SENAC EAD</span>
+            <span><strong>Curso:</strong> Pós-Graduação em Tecnologia na Aprendizagem</span>
+            <span><strong>Disciplina:</strong> Acessibilidade e Tecnologias Assistivas</span>
+            <span><strong>Autor:</strong> Carlos Alberto Ferreira Dias</span>
+            <span><strong>Local:</strong> Curitiba – PR</span>
+            <span><strong>Ano:</strong> 2026</span>
+        </div>
+    </header>
+
+    <!-- Navegação -->
+    <nav role="navigation" aria-label="Navegação principal">
+        <ul>
+            <li><a href="#introducao">Introdução</a></li>
+            <li><a href="#tecnologias">Tecnologias</a></li>
+            <li><a href="#beneficios">Benefícios</a></li>
+            <li><a href="#desafios">Desafios</a></li>
+            <li><a href="#impacto">Impacto</a></li>
+            <li><a href="#acessibilidade">Acessibilidade</a></li>
+        </ul>
+    </nav>
+
+    <!-- Conteúdo Principal -->
+    <main id="conteudo-principal" class="container">
+
+        <!-- Introdução -->
+        <section id="introducao">
+            <h2>Introdução</h2>
+            <p>A tecnologia oferece ferramentas que fortalecem a relação entre todos os indivíduos, cidadãos e pessoas humanas que compartilham o mesmo ambiente e recurso, auxiliando na inclusão dos indivíduos, cidadãos e pessoas humanas com deficiência nos processos de ensino e aprendizagem.</p>
+            
+            <div class="destaque">
+                <strong>Conceito-chave:</strong> As tecnologias funcionam como mediadoras, ampliando as possibilidades de participação e garantindo maior equidade no acesso ao conhecimento.
+            </div>
+        </section>
+
+        <!-- Tecnologias Assistivas -->
+        <section id="tecnologias">
+            <h2>Tecnologias Assistivas e Mídias Digitais</h2>
+            
+            <h3>Eis alguns pontos principais:</h3>
+            
+            <h4>Tecnologias Assistivas</h4>
+            <p>Softwares leitores de tela, ampliadores de texto, teclados adaptados, dispositivos de comunicação alternativa e aplicativos de reconhecimento de voz permitem que estudantes com diferentes tipos de deficiência interajam com conteúdos e atividades escolares.</p>
+
+            <h4>Mídias Digitais</h4>
+            <p>Vídeos com legendas, materiais em áudio, recursos visuais interativos e plataformas acessíveis favorecem a compreensão e a participação de alunos com deficiência auditiva, visual ou intelectual.</p>
+
+            <h3>Mais alguns exemplos:</h3>
+
+            <h4>Ambientes Virtuais Inclusivos</h4>
+            <p>Plataformas de ensino online que seguem padrões de acessibilidade (como WCAG) garantem que todos possam navegar e aprender sem barreiras.</p>
+
+            <h4>Pedagogia Flexível</h4>
+            <p>Uso de recursos digitais que permitem personalização do ritmo e da forma de aprendizagem, atendendo às necessidades individuais de cada estudante.</p>
+        </section>
+
+        <!-- Benefícios -->
+        <section id="beneficios">
+            <h2>📊 Benefícios das Tecnologias Assistivas na Aprendizagem</h2>
+            
+            <div class="cards-container">
+                <div class="card">
+                    <h4>Maior Autonomia</h4>
+                    <p>Estudantes com deficiência ganham maior independência no acesso ao conhecimento e participação nas atividades escolares.</p>
+                </div>
+                <div class="card">
+                    <h4>Redução de Barreiras</h4>
+                    <p>Eliminação das barreiras físicas e comunicacionais que historicamente excluíram pessoas com deficiência.</p>
+                </div>
+                <div class="card">
+                    <h4>Participação Ativa</h4>
+                    <p>Estímulo à participação ativa e colaborativa em atividades pedagógicas e sociais.</p>
+                </div>
+                <div class="card">
+                    <h4>Apoio Pedagógico</h4>
+                    <p>Suporte ao professor na diversificação de estratégias pedagógicas para atender a todos os alunos.</p>
+                </div>
+            </div>
+
+            <ul>
+                <li><strong>Maior autonomia dos estudantes com deficiência.</strong></li>
+                <li><strong>Redução das barreiras físicas e comunicacionais.</strong></li>
+                <li><strong>Estímulo à participação ativa e colaborativa.</strong></li>
+                <li><strong>Apoio ao professor na diversificação de estratégias pedagógicas.</strong></li>
+            </ul>
+        </section>
+
+        <!-- Desafios -->
+        <section id="desafios" class="desafios">
+            <h2>⚠️ Desafios</h2>
+            
+            <p>Apesar dos benefícios significativos, a implementação de tecnologias assistivas enfrenta desafios importantes:</p>
+
+            <ul>
+                <li><strong>Formação Docente:</strong> Necessidade de formação continuada dos docentes para uso adequado das tecnologias.</li>
+                <li><strong>Custos e Acesso:</strong> Custos e acesso desigual a dispositivos e softwares, especialmente em regiões menos desenvolvidas.</li>
+                <li><strong>Integração Curricular:</strong> Garantia de que os recursos sejam realmente integrados ao currículo, e não apenas complementares.</li>
+            </ul>
+
+            <div class="destaque" style="background: #ffe8e8; border-left-color: var(--cor-destaque);">
+                <strong>Descrição da imagem ilustrativa:</strong> A imagem mostra uma cena simbólica e educativa. No lado esquerdo inferior, há um estudante jovem visto de costas, sentado em uma cadeira de rodas. Ele veste uma camiseta amarela e carrega uma mochila vermelha. O estudante enfrenta uma escadaria íngreme à sua frente, composta por quatro degraus largos e cinzentos, cada um representando um obstáculo à inclusão: Falta de Acesso, Custo, Formação e Integração Curricular.
+            </div>
+        </section>
+
+        <!-- Impacto e Evidências -->
+        <section id="impacto">
+            <h2>Impacto e Evidências: Tecnologias Assistivas na Prática</h2>
+            
+            <p>Estudos nacionais e internacionais demonstram que o uso sistemático de Tecnologias Assistivas, aliado à formação docente e ao suporte institucional, produz resultados significativos para a inclusão e para o desempenho acadêmico dos estudantes com deficiência.</p>
+
+            <h3>Estatísticas Principais</h3>
+            <div class="stats-container">
+                <div class="stat-box">
+                    <div class="numero">72%</div>
+                    <div class="descricao">Redução de barreiras</div>
+                </div>
+                <div class="stat-box">
+                    <div class="numero">3x</div>
+                    <div class="descricao">Autonomia ampliada</div>
+                </div>
+                <div class="stat-box">
+                    <div class="numero">65%</div>
+                    <div class="descricao">Formação docente</div>
+                </div>
+                <div class="stat-box">
+                    <div class="numero">40%</div>
+                    <div class="descricao">Melhora na participação</div>
+                </div>
+            </div>
+
+            <h3>Evidências de Pesquisa</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Achado de Pesquisa</th>
+                        <th>Fonte</th>
+                        <th>Ano</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Estudantes com deficiência relataram maior engajamento em atividades pedagógicas com uso de TAs</td>
+                        <td>UNESCO</td>
+                        <td>2020</td>
+                    </tr>
+                    <tr>
+                        <td>Estudantes com CAA apresentaram até três vezes mais iniciativas comunicativas em sala de aula</td>
+                        <td>ASHA</td>
+                        <td>2021</td>
+                    </tr>
+                    <tr>
+                        <td>Escolas com DUA implementado relataram redução expressiva nas barreiras de acesso ao currículo</td>
+                        <td>CAST</td>
+                        <td>2018</td>
+                    </tr>
+                    <tr>
+                        <td>Apenas 40% dos professores brasileiros relatam ter recebido formação em TAs durante a graduação</td>
+                        <td>INEP</td>
+                        <td>2022</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="destaque">
+                <strong>Conclusão:</strong> Esses dados reforçam que as tecnologias são condição necessária, mas não suficiente: a inclusão de qualidade exige formação docente contínua, políticas públicas consistentes e transformação cultural nas instituições de ensino.
+            </div>
+
+            <h3>Marco Legal</h3>
+            <p>A inclusão educacional configura-se como um direito fundamental, reconhecido pela <strong>Lei Brasileira de Inclusão (Lei nº 13.146/2015)</strong> e pela <strong>Convenção sobre os Direitos das Pessoas com Deficiência da ONU</strong>. Nesse contexto, a escola tem a responsabilidade de garantir o acesso, a participação e a aprendizagem de todos os estudantes, independentemente de suas condições físicas, sensoriais, intelectuais ou sociais.</p>
+
+            <blockquote>
+                <strong>A tecnologia emerge como aliada indispensável nesse processo,</strong> ampliando as possibilidades pedagógicas e reduzindo barreiras que historicamente excluíram parcelas significativas da população do sistema educacional.
+            </blockquote>
+        </section>
+
+        <!-- Acessibilidade -->
+        <section id="acessibilidade">
+            <h2>Recursos de Acessibilidade Deste Material</h2>
+            
+            <p>Em conformidade com os princípios do Desenho Universal para a Aprendizagem e com as diretrizes de acessibilidade digital (WCAG 2.1), este material foi produzido com os seguintes recursos de acessibilidade, tornando-o mais inclusivo para todos os leitores e usuários.</p>
+
+            <h3>Tipografia Acessível</h3>
+            <p>Fontes sem serifa (sans-serif) foram utilizadas em todos os elementos textuais, favorecendo a leitura para pessoas com dislexia, baixa visão e deficiências cognitivas, conforme recomendações da British Dyslexia Association.</p>
+
+            <h3>Alto Contraste</h3>
+            <p>As combinações de cores aplicadas neste material respeitam a proporção mínima de contraste de 4,5:1 para texto normal e 3:1 para texto grande, em conformidade com o critério 1.4.3 das WCAG 2.1 (nível AA).</p>
+
+            <h3>Alinhamento com Normativas</h3>
+            <p>Este material alinha-se à <strong>Lei Brasileira de Inclusão (Lei nº 13.146/2015)</strong>, ao <strong>Modelo de Acessibilidade em Governo Eletrônico (eMAG)</strong> e às diretrizes internacionais de acessibilidade digital <strong>WCAG 2.1 do W3C</strong>.</p>
+
+            <h3>Linguagem Clara e Estrutura Lógica</h3>
+            <p>O conteúdo foi organizado com hierarquia de títulos consistente (H1, H2, H3), linguagem direta e estruturada, facilitando a navegação por tecnologias assistivas e a compreensão por pessoas com deficiência intelectual ou cognitiva.</p>
+
+            <h3>Declaração de Acessibilidade</h3>
+            <blockquote>
+                <strong>"A acessibilidade não é um favor — é um direito. Projetar para a diversidade é projetar para a excelência."</strong> — Inspirado nos princípios do Desenho Universal
+            </blockquote>
+
+            <div class="destaque">
+                <h4>Suporte a VLIBRAS</h4>
+                <p>Esta página foi desenvolvida com suporte à extensão VLIBRAS do Chrome, permitindo que usuários surdos ou com deficiência auditiva acessem o conteúdo em Língua Brasileira de Sinais (Libras). Instale a extensão em: <a href="https://chromewebstore.google.com/detail/vlibras/pgmmmoocgnompmjoogpnkmdohpelkpne?hl=pt-BR" target="_blank" rel="noopener noreferrer">VLIBRAS - Chrome Web Store</a></p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer role="contentinfo">
+        <p><strong>Tecnologias Assistivas na Educação</strong></p>
+        <p>Atividade de Avaliação Individual - Pós-Graduação em Tecnologias na Aprendizagem</p>
+        <p>SENAC EAD | Curitiba – PR | 2026</p>
+        <div class="footer-links">
+            <p>
+                <a href="https://www.senac.br" target="_blank" rel="noopener noreferrer">SENAC</a> |
+                <a href="https://www.w3.org/WAI/WCAG21/quickref/" target="_blank" rel="noopener noreferrer">WCAG 2.1</a> |
+                <a href="https://www.gov.br/cidadania/pt-br/acesso-a-informacao/lei-brasileira-de-inclusao" target="_blank" rel="noopener noreferrer">Lei Brasileira de Inclusão</a> |
+                <a href="https://chromewebstore.google.com/detail/vlibras/pgmmmoocgnompmjoogpnkmdohpelkpne?hl=pt-BR" target="_blank" rel="noopener noreferrer">VLIBRAS</a>
+            </p>
+        </div>
+        <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.9;">© 2026 Carlos Alberto Ferreira Dias. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Script VLIBRAS -->
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+
+</body>
+</html>
